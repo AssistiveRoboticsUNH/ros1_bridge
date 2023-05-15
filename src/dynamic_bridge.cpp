@@ -213,6 +213,9 @@ void update_bridge(
   for (auto ros2_publisher : ros2_publishers) {
     // identify topics available as ROS 1 subscribers as well as ROS 2 publishers
     auto topic_name = ros2_publisher.first;
+    if (topic_name=="/rosout"){
+	continue;
+    }
     std::string ros2_type_name = ros2_publisher.second;
     std::string ros1_type_name;
 
@@ -386,6 +389,7 @@ void update_bridge(
 void get_ros1_service_info(
   const std::string name, std::map<std::string, std::map<std::string, std::string>> & ros1_services)
 {
+  return;
   // NOTE(rkozik):
   // I tried to use Connection class but could not make it work
   // auto callback = [](const ros::ConnectionPtr&, const ros::Header&)
